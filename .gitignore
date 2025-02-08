@@ -1,0 +1,16 @@
+# Ignora file temporanei
+*.tmp
+*.log
+
+# Ignora cartelle di cache
+/node_modules/
+/vendor/
+/cache/
+
+# Ignora file sensibili
+.env
+credentials.json
+
+# Ignora file di sistema
+.DS_Store
+Thumbs.db
