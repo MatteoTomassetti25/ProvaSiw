@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuovo Curatore</title>
+    <link rel="icon" href="/images/icons8-punta-della-matita-32.png" type="image/png" sizes="40x40">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Inserisci un Nuovo Curatore</h1>
+
+        <div th:if="${messaggioErrore}" class="alert alert-danger" role="alert">
+            <p th:text="${messaggioErrore}"></p>
+        </div>
+
+        <form th:action="@{/admin/salvaCuratore}" method="post">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome curatore:</label>
+                <input type="text" id="nome" name="nome" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="cognome" class="form-label">Cognome curatore:</label>
+                <input type="text" id="cognome" name="cognome" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="dataNascita" class="form-label">Nascita curatore:</label>
+                <input type="date" id="dataNascita" name="dataNascita" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="luogoNascita" class="form-label">Luogo nascita curatore:</label>
+                <input type="text" id="luogoNascita" name="luogoNascita" class="form-control" required />
+            </div>
+
+            <!-- Rimosso il campo di selezione dell'area -->
+            <!--
+            <div class="mb-3">
+                <label for="area" class="form-label">Area:</label>
+                <select id="area" name="area.id" class="form-control">
+                    <option value="">-- Nessuna area --</option>
+                    <option th:each="area : ${aree}" th:value="${area.id}" th:text="${area.nome}"></option>
+                </select>
+            </div>
+            -->
+
+            <button type="submit" class="btn btn-success">Salva Curatore</button>
+            <a href="/" class="btn btn-secondary">Annulla</a>
+        </form>
+    </div>
+</body>
+</html>

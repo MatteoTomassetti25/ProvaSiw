@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inserimento Opera</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  </head>
+<body>
+<div class="container">
+    <h1>Inserimento Opera</h1>
+
+    <form th:action="@{/admin/salvaOpera}" th:object="${opera}" method="post">
+
+        <div class="form-group">
+            <label for="titolo">Titolo:</label>
+            <input type="text" class="form-control" id="titolo" th:field="*{titolo}" required>
+            <div th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}" class="text-danger"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="tecnica">Tecnica:</label>
+            <input type="text" class="form-control" id="tecnica" th:field="*{tecnica}" required>
+            <div th:if="${#fields.hasErrors('tecnica')}" th:errors="*{tecnica}" class="text-danger"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="anno">Anno:</label>
+            <input type="number" class="form-control" id="anno" th:field="*{anno}" required>
+            <div th:if="${#fields.hasErrors('anno')}" th:errors="*{anno}" class="text-danger"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="collocazione">Collocazione:</label>
+            <select class="form-control" id="collocazione" th:field="*{collocazione}" required>
+                <option value="">Seleziona un'area</option>
+                <option th:each="area : ${aree}" th:value="${area.id}" th:text="${area.nome}"></option>
+            </select>
+            <div th:if="${#fields.hasErrors('collocazione')}" th:errors="*{collocazione}" class="text-danger"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="artista">Artista:</label>
+            <select class="form-control" id="artista" th:field="*{artista}" required>
+                <option value="">Seleziona un artista</option>
+                <option th:each="artista : ${artisti}" th:value="${artista.id}" th:text="${artista.nome}"></option>
+            </select>
+            <div th:if="${#fields.hasErrors('artista')}" th:errors="*{artista}" class="text-danger"></div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Salva</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

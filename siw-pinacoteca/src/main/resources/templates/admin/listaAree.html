@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Aree</title>
+</head>
+<body>
+    <h1>Lista delle Aree</h1>
+
+    <!-- Messaggi di conferma/errore -->
+    <div th:if="${messaggioConferma}" style="color: green;">
+        <p th:text="${messaggioConferma}"></p>
+    </div>
+    <div th:if="${messaggioErrore}" style="color: red;">
+        <p th:text="${messaggioErrore}"></p>
+    </div>
+
+    <!-- Tabella delle aree -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Curatore</th>
+                <th>Azioni</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="area : ${aree}">
+                <td th:text="${area.id}"></td>
+                <td th:text="${area.nome}"></td>
+                <td th:text="${area.curatore != null ? area.curatore.nome + ' ' + area.curatore.cognome : 'Nessun curatore'}"></td>
+                <td>
+                    <a th:href="@{/admin/modificaArea/{id}(id=${area.id})}">Modifica</a> |
+                    <a th:href="@{/admin/eliminaArea/{id}(id=${area.id})}" onclick="return confirm('Sei sicuro di voler eliminare questa area?');">Elimina</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <a th:href="@{/admin/operazioniAree}">Torna alle operazioni sulle aree</a>
+</body>
+</html>

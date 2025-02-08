@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risultati Filtri</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Risultati Filtri</h1>
+
+    <!-- Mostra i filtri applicati -->
+    <div>
+        <strong>Filtri applicati:</strong>
+        <ul>
+            <li th:if="${selectedArtista != null && !selectedArtista.isEmpty()}">Artista: <span th:text="${selectedArtista}"></span></li>
+            <li th:if="${selectedAnno != null}">Anno: <span th:text="${selectedAnno}"></span></li>
+            <li th:if="${selectedTecnica != null && !selectedTecnica.isEmpty()}">Tecnica: <span th:text="${selectedTecnica}"></span></li>
+        </ul>
+    </div>
+
+    <!-- Lista delle opere filtrate -->
+    <div id="artworks">
+        <div th:each="opera : ${opere}" 
+             class="artwork" 
+             th:text="${opera.titolo} + ' - ' + ${opera.artista.nome} + ' (' + ${opera.anno} + ')'">
+        </div>
+    </div>
+
+    <!-- Link per tornare alla pagina di filtraggio -->
+    <a th:href="@{/filtraOpere}">Torna ai filtri</a>
+</body>
+</html>

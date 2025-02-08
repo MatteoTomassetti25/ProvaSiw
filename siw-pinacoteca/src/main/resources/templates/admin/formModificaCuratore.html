@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifica Curatore</title>
+</head>
+<body>
+    <h1>Modifica Curatore</h1>
+    <form th:action="@{/admin/salvaModificheCuratore/{id}(id=${curatore.id})}" th:object="${curatore}" method="post">
+        <div>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" th:field="*{nome}" required />
+            <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+        </div>
+
+        <div>
+            <label for="cognome">Cognome:</label>
+            <input type="text" id="cognome" th:field="*{cognome}" required />
+            <span th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></span>
+        </div>
+
+        <div>
+            <label for="dataNascita">Data di Nascita:</label>
+            <input type="date" id="dataNascita" th:field="*{dataNascita}" required />
+            <span th:if="${#fields.hasErrors('dataNascita')}" th:errors="*{dataNascita}"></span>
+        </div>
+
+        <div>
+            <label for="luogoNascita">Luogo di Nascita:</label>
+            <input type="text" id="luogoNascita" th:field="*{luogoNascita}" required />
+            <span th:if="${#fields.hasErrors('luogoNascita')}" th:errors="*{luogoNascita}"></span>
+        </div>
+
+		<div>
+		    <label for="area">Area Associata:</label>
+		    <select id="area" name="area">
+		        <option value="" th:selected="${curatore.area == null}">-- Nessuna area --</option>
+		        <option th:each="area : ${aree}" 
+		                th:value="${area.id}" 
+		                th:text="${area.nome}"
+		                th:selected="${curatore.area != null and area.id == curatore.area.id}">
+		        </option>
+		    </select>
+		</div>
+
+        <div>
+            <button type="submit">Salva Modifiche</button>
+        </div>
+    </form>
+
+    <a th:href="@{/admin/listaCuratori}">Torna alla lista dei curatori</a>
+</body>
+</html>

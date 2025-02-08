@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtra Opere</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Filtra Opere</h1>
+
+    <!-- Form per i filtri -->
+    <form method="GET" th:action="@{/risultatiFiltri}">
+        <!-- Filtro per artista -->
+        <select name="artista">
+            <option value="">Tutti gli artisti</option>
+            <option th:each="artista : ${artisti}" 
+                    th:value="${artista.id}" 
+                    th:text="${artista.nome}">
+            </option>
+        </select>
+
+        <!-- Filtro per anno -->
+        <select name="anno">
+            <option value="">Tutti gli anni</option>
+            <option th:each="anno : ${anni}" 
+                    th:value="${anno}" 
+                    th:text="${anno}">
+            </option>
+        </select>
+
+        <!-- Filtro per tecnica -->
+        <select name="tecnica">
+            <option value="">Tutte le tecniche</option>
+            <option th:each="tecnica : ${tecniche}" 
+                    th:value="${tecnica}" 
+                    th:text="${tecnica}">
+            </option>
+        </select>
+
+        <button type="submit">Filtra</button>
+    </form>
+</body>
+</html>

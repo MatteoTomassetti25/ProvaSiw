@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserisci Nuova Area</title>
+    <link rel="icon" href="/images/icons8-punta-della-matita-32.png" type="image/png" sizes="40x40">
+</head>
+<body>
+    <div class="container">
+        <h1>Inserisci una nuova Area</h1>
+        <form th:action="@{/admin/salvaArea}" th:object="${area}" method="post">
+            <div>
+                <label for="nome" class="form-label">Nome dell'area:</label>
+                <input type="text" id="nome" th:field="*{nome}" class="form-control" required>
+                <small th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="alert">Errore nel nome</small>
+            </div>
+            <div>
+                <label for="curatore" class="form-label">Seleziona Curatore:</label>
+                <select id="curatore" name="curatore" class="form-control">
+                    <option value="">-- Nessun curatore --</option>
+                    <option th:each="curatore : ${curatori}" 
+                            th:value="${curatore.id}" 
+                            th:text="${curatore.nome}">
+                    </option>
+                </select>
+                <small th:if="${#fields.hasErrors('curatore')}" th:errors="*{curatore}" class="alert">Errore nel curatore</small>
+            </div>
+            <div>
+                <button type="submit" class="btn">Salva Area</button>
+            </div>
+            <div class="text-center mt-4">
+                <a href="/admin/operazioniAree" class="btn btn-primary">Torna al Menu</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

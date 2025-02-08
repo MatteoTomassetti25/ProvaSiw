@@ -1,0 +1,165 @@
+/* =============== RESET DI BASE =============== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f8f9fa; /* Grigio chiaro */
+    color: #333;
+    text-align: center;
+    padding-top: 80px; /* Evita che il contenuto venga coperto dalla navbar */
+}
+
+/* =============== NAVBAR =============== */
+.navbar {
+    background-color: #B22222; /* Rosso scuro */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+    background-color: #8B0000; /* Rosso più scuro */
+}
+
+/* =============== CONTENITORE PRINCIPALE =============== */
+.container {
+    max-width: 1200px;
+    background: white;
+    padding: 40px;
+    margin: 30px auto;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* =============== TABELLE =============== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #B22222; /* Rosso scuro */
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+/* =============== BOTTONI =============== */
+.btn {
+    background-color: #D32F2F; /* Rosso */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+    display: inline-block;
+    margin: 5px;
+}
+
+.btn:hover {
+    background-color: #B22222;
+}
+
+/* Bottoni di avviso */
+.btn-warning {
+    background-color: #ffc107; /* Giallo */
+    color: #333;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+/* Bottoni di pericolo */
+.btn-danger {
+    background-color: #dc3545; /* Rosso intenso */
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* =============== FORM =============== */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 400px;
+    text-align: left;
+}
+
+label {
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+/* =============== RESPONSIVE DESIGN =============== */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .navbar {
+        font-size: 18px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+}
